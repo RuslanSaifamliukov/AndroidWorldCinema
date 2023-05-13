@@ -29,21 +29,21 @@ class SignInActivity : AppCompatActivity() {
         pass = findViewById(R.id.editTextName2)
         check = findViewById(R.id.checkBox)
         preff = getSharedPreferences("TABLEE", MODE_PRIVATE)
-        check.isChecked = preff?.getBoolean("key3", false) ?: false
-        mail.setText(preff?.getString("key1", ""))
-        pass.setText(preff?.getString("key2", ""))
+        check.isChecked = preff?.getBoolean("key4", false) ?: false
+        mail.setText(preff?.getString("key2", ""))
+        pass.setText(preff?.getString("key3", ""))
     }
 
     fun savestate(check: Boolean) {
         val editor = preff?.edit()
-        editor?.putBoolean("key3", check)
+        editor?.putBoolean("key4", check)
         editor?.apply()
     }
 
     fun saveData(mail: String, pass: String) {
         val editor = preff?.edit()
-        editor?.putString("key1", mail)
-        editor?.putString("key2", pass)
+        editor?.putString("key2", mail)
+        editor?.putString("key3", pass)
         editor?.apply()
     }
 
@@ -77,7 +77,7 @@ class SignInActivity : AppCompatActivity() {
                     {
                         saveData(value, value2)
                         savestate(checkboxstate)
-                        val intent = Intent(this@SignInActivity, FinishActivity::class.java)
+                        val intent = Intent(this@SignInActivity, ToolbarActivity::class.java)
                         startActivity(intent)
                         Toast.makeText(this, "Добро пожаловать!", Toast.LENGTH_SHORT).show()
                         finish()
@@ -85,7 +85,7 @@ class SignInActivity : AppCompatActivity() {
                     else
                     {
                         deleteAll()
-                        val intent = Intent(this@SignInActivity, FinishActivity::class.java)
+                        val intent = Intent(this@SignInActivity, ToolbarActivity::class.java)
                         startActivity(intent)
                         Toast.makeText(this, "Добро пожаловать!", Toast.LENGTH_SHORT).show()
                         finish()
@@ -99,7 +99,7 @@ class SignInActivity : AppCompatActivity() {
 
             else
             {
-                Toast.makeText(this, "Ваш E-mail введён не корректно!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "E-mail введён не корректно!", Toast.LENGTH_SHORT).show()
             }
 
         }
